@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './components/Navigation';
+import { Routes, Route } from 'react-router-dom';
+import Contact from './pages/Contact';
+import CreateContact from './pages/CreateContact';
+import EditContact from './pages/EditContact';
+import ChartsMaps from './pages/ChartsMaps';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex gap-5">
+      <div>
+        <Navigation />
+      </div>
+      <div className="w-full">
+        <Routes>
+          <Route path="/" element={<>Hello world</>} />
+          <Route path="/contact">
+            <Route index element={<Contact />} />
+            <Route path="create-contact" element={<CreateContact />} />
+            <Route path="edit/:id" element={<EditContact />} />
+          </Route>
+          <Route path="charts-maps" element={<ChartsMaps />} />
+        </Routes>
+      </div>
     </div>
   );
 }

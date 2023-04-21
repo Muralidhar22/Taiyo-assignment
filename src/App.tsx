@@ -12,7 +12,7 @@ function App() {
       <div>
         <Navigation />
       </div>
-      <div className="w-full">
+      <div className="w-full py-2">
         <Routes>
           <Route path="/" element={<>Hello world</>} />
           <Route path="/contact">

@@ -42,3 +42,12 @@ export type MarkerType = {
         deaths: number;
     }
 }
+
+export type ContactType = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  status: "active" | "inactive"
+}
+
+export type ChartTimelineType = "month" | "sixMonths" | "year" | "twoYears" | "all"

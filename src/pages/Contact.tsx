@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTypedSelector } from "../app/store";
 import { selectContactList } from "../features/contact/contactSlice";
+import ContactCard from "../components/ContactCard";
 
 const EmptyContactMessage = () => {
     return(
@@ -15,14 +16,13 @@ const EmptyContactMessage = () => {
 const Contact = () => {
   const contactList = useTypedSelector(selectContactList)
   
-  console.log({contactList})
-  
   return (
     <>
-    <img src="https://cdn-icons-png.flaticon.com/512/848/848006.png " alt="" />
         <Link to="create-contact" className="block border-2 p-2">Create contact</Link>
         {contactList.length > 0 
-        ? <></>
+        ? <div className="flex flex-wrap gap-3 my-2">
+            {contactList?.map((contact) => <ContactCard key={contact.id} data={contact} />)}
+        </div>
         : <EmptyContactMessage />}
     </>
   )   

@@ -8,7 +8,6 @@ const DashboardCount = () => {
         queryFn: getWorldWideCount,
     })
     
-    console.log({data})
     if(!data) {
         return null
     }

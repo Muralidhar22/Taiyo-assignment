@@ -24,5 +24,5 @@ root.render(
         </BrowserRouter>
       </Provider>
     </QueryClientProvider>
-  </React.StrictMode>
+   </React.StrictMode>
 );

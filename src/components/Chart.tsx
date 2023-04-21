@@ -2,44 +2,50 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJs, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement } from "chart.js";
 import { useQuery } from "@tanstack/react-query"
 import { getCaseDataByDate } from "../api/covidApi";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { ChartTimelineType } from "../types";
+import handleFilterChange from "../utils/dataFilter";
 
 ChartJs.register(
     Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement
 )
 
 const Chart = () => {
+    const [chartTimeline, setChartTimeline] = useState<ChartTimelineType>("all")
     const { data, isLoading, error } = useQuery({
         queryKey: ["cases-date"],
-        queryFn: getCaseDataByDate
+        queryFn: getCaseDataByDate,
+       // select: 
     })
     const casesDates = useMemo(() => {
         if(data) {
-            return Object.entries(data?.cases).map(el => el[0])
+            return handleFilterChange(chartTimeline, data, "label")
     }
     return null   
-    }, [data?.cases]);
+    }, [data?.cases, chartTimeline, data]);
     const casesCount = useMemo(() => {
             if(data) {
-                    return Object.entries(data?.cases).map(el => el[1])
+                    console.log(handleFilterChange(chartTimeline, data.cases, "value"))
+                    return handleFilterChange(chartTimeline, data.cases, "value")
             }
             return null   
         }
-    , [data?.cases]);
+    , [data?.cases, chartTimeline, data]);
     const deathsCount = useMemo(() => {
         if(data) {
-                return Object.entries(data?.deaths).map(el => el[1])
+                console.log(handleFilterChange(chartTimeline, data.deaths, "value"))
+                return handleFilterChange(chartTimeline, data.deaths, "value")
         }
         return null   
     }
-, [data?.deaths]);
+, [data?.deaths, chartTimeline, data]);
     const recoveredCount = useMemo(() => {
         if(data) {
-                return Object.entries(data?.recovered).map(el => el[1])
+                return handleFilterChange(chartTimeline, data.recovered, "value")
         }
         return null   
     }
-, [data?.recovered]);
+, [data?.recovered, chartTimeline, data]);
     
     if(!data) {
         return null
@@ -52,7 +58,7 @@ const Chart = () => {
     if(error) {
         return <div>{JSON.stringify(error)}</div>
     }
-    
+    console.log({casesCount, deathsCount})
     const dataSet = {
         labels: casesDates ?? [],
         datasets: [

@@ -15,37 +15,65 @@ const Chart = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ["cases-date"],
         queryFn: getCaseDataByDate,
-       // select: 
     })
     const casesDates = useMemo(() => {
         if(data) {
-            return handleFilterChange(chartTimeline, data, "label")
+            return Object.entries(data?.cases).map(el => el[0]).slice(-700)
     }
     return null   
-    }, [data?.cases, chartTimeline, data]);
+    }, [data?.cases]);
     const casesCount = useMemo(() => {
             if(data) {
-                    console.log(handleFilterChange(chartTimeline, data.cases, "value"))
-                    return handleFilterChange(chartTimeline, data.cases, "value")
+                    return Object.entries(data?.cases).map(el => el[1]).slice(-700)
             }
             return null   
         }
-    , [data?.cases, chartTimeline, data]);
+    , [data?.cases]);
     const deathsCount = useMemo(() => {
         if(data) {
-                console.log(handleFilterChange(chartTimeline, data.deaths, "value"))
-                return handleFilterChange(chartTimeline, data.deaths, "value")
+                return Object.entries(data?.deaths).map(el => el[1]).slice(-700)
         }
         return null   
     }
-, [data?.deaths, chartTimeline, data]);
+, [data?.deaths]);
     const recoveredCount = useMemo(() => {
         if(data) {
-                return handleFilterChange(chartTimeline, data.recovered, "value")
+                return Object.entries(data?.recovered).map(el => el[1]).slice(-700)
         }
         return null   
     }
-, [data?.recovered, chartTimeline, data]);
+, [data?.recovered]);
+//     const casesDates = useMemo(() => {
+//         if(data) {
+//             return handleFilterChange(chartTimeline, data, "label")
+//     }
+//     return null   
+//     }, [data?.cases, chartTimeline, data]);
+//     const casesCount = useMemo(() => {
+//             if(data) {
+//               return Object.entries(data.cases).map(el => {
+//                     return el[1]
+//                  }).slice(-700)
+//                     // return handleFilterChange(chartTimeline, data.cases, "value")
+//             }
+//             return null   
+//         }
+//     , [data?.cases, chartTimeline, data]);
+//     const deathsCount = useMemo(() => {
+//         if(data) {
+//                 console.log(handleFilterChange(chartTimeline, data.deaths, "value"))
+//                 return handleFilterChange(chartTimeline, data.deaths, "value")
+//         }
+//         return null   
+//     }
+// , [data?.deaths, chartTimeline, data]);
+//     const recoveredCount = useMemo(() => {
+//         if(data) {
+//                 return handleFilterChange(chartTimeline, data.recovered, "value")
+//         }
+//         return null   
+//     }
+// , [data?.recovered, chartTimeline, data]);
     
     if(!data) {
         return null
@@ -58,7 +86,9 @@ const Chart = () => {
     if(error) {
         return <div>{JSON.stringify(error)}</div>
     }
-    console.log({casesCount, deathsCount})
+
+    console.log(casesCount)
+    
     const dataSet = {
         labels: casesDates ?? [],
         datasets: [

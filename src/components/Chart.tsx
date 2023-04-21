@@ -52,8 +52,6 @@ const Chart = () => {
     if(error) {
         return <div>{JSON.stringify(error)}</div>
     }
-
-    console.log(casesCount)
     
     const dataSet = {
         labels: casesDates ?? [],

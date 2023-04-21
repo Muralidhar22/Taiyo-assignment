@@ -21,7 +21,7 @@ const ContactCard = ({ data }: { data: ContactType }) => {
                 </div>
                 <span className="text-slate-500">{data.status}</span>
             </div> 
-            <Link className="bg-green-700 rounded-md p-2 text-white font-bold block w-full" to={`edit/${data.id}`}>Edit</Link>
+            <Link className="bg-green-700 rounded-md p-2 text-white font-bold block w-full text-center" to={`edit/${data.id}`}>Edit</Link>
             <button onClick={onClickHandler} className="bg-rose-700 cursor-pointer rounded-md p-2 text-white font-bold">Delete</button>
         </div>
     )

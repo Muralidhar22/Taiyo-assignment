@@ -12,14 +12,12 @@ function App() {
       <div className="md:w-1/5 relative">
         <Navigation />
       </div>
-      <div className="w-full py-2">
+      <div className="w-full py-2 pr-2">
         <Routes>
-          <Route path="/" element={<>Hello world</>} />
-          <Route path="/contact">
-            <Route index element={<Contact />} />
+          <Route path="/" element={<Contact />} />
             <Route path="create-contact" element={<CreateContact />} />
             <Route path="edit/:id" element={<EditContact />} />
-          </Route>
+          
           <Route path="charts-maps" element={<ChartsMaps />} />
         </Routes>
       </div>

@@ -18,26 +18,27 @@ const CreateContact = () => {
     const onSubmitHandler = (e: React.FormEvent) => {
         e.preventDefault()
         dispatch(addContact(formState))
+        setFormState(INITIAL_STATE)
     }
     
     return(
         <div className="flex flex-col gap-10 items-center h-min-100 justify-center">
-            <h1>Create Contact</h1>
-            <form onSubmit={onSubmitHandler}>
-                <div>
+            <h1 className="text-xl font-semibold">Create Contact</h1>
+            <form onSubmit={onSubmitHandler} className="flex flex-col gap-5 items-center">
+                <div className="flex gap-2 items-center">
                     <label htmlFor="firstname">First Name:</label>
-                    <input required type="text" id="firstname" 
+                    <input className="p-1 rounded-md border-2" required type="text" id="firstname" 
                            onChange={(e) => setFormState(prev => ({...prev,firstName: e.target.value }))} 
                            value={formState.firstName}/>  
                 </div>
-                <div>
+                <div className="flex gap-2 items-center">
                     <label htmlFor="lastname">Last Name:</label>
-                    <input required type="text" id="lastname"
+                    <input className="p-1 rounded-md border-2" required type="text" id="lastname"
                      onChange={(e) => setFormState(prev => ({...prev,lastName: e.target.value }))}
                     value={formState.lastName}/>  
                 </div>
-                <div className="flex gap-2 items-center">
-                    <div>Status</div>
+                <div className="flex gap-5 items-center">
+                    <div>Status:</div>
                     <div className="flex flex-col gap-2">
                         <div>
                             <input required type="radio" name="status"
@@ -53,7 +54,7 @@ const CreateContact = () => {
                         </div>
                     </div>
                 </div>
-                <button>Save Contact</button>
+                <button className="rounded-md p-2 border-2 cursor-pointer">Save Contact</button>
             </form>
         </div>
     )

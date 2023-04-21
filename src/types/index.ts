@@ -49,5 +49,3 @@ export type ContactType = {
   lastName: string;
   status: "active" | "inactive"
 }
-
-export type ChartTimelineType = "month" | "sixMonths" | "year" | "twoYears" | "all"

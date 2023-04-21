@@ -17,12 +17,6 @@ const Map = () => {
     const { data: markers, isLoading, error } = useQuery({
         queryKey: ['cases-country'],
         queryFn: getCountryWiseDetails,
-        // select: (fetchedData) => fetchedData.map((data: CountryCaseType) => ({ geoCode: [data?.countryInfo?.lat || 0, data?.countryInfo?.long || 0], popUpData: {
-        //     countryName: data.country,
-        //     activeCases: data.active,
-        //     recoveredCases: data.recovered,
-        //     deaths: data.deaths
-        // } }))
     })
     
     if(!markers) {

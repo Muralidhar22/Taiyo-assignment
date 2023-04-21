@@ -8,8 +8,8 @@ import ChartsMaps from './pages/ChartsMaps';
 
 function App() {
   return (
-    <div className="App flex gap-5">
-      <div>
+    <div className="md:flex md:gap-5">
+      <div className="md:w-1/5 relative">
         <Navigation />
       </div>
       <div className="w-full py-2">

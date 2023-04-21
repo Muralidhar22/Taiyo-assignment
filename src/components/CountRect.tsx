@@ -7,9 +7,6 @@ const CountRect = ({
     title,
     count
 }: CountRectProps) => {
-    
-    
-    
     return(
         <>
             <div className="border-2 rounded-md p-2">

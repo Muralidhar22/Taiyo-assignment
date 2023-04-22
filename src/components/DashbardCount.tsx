@@ -13,7 +13,7 @@ const DashboardCount = () => {
     }
     
     return(
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 justify-center">
           <CountRect title="Total" count={data.cases} />  
           <CountRect title="Active" count={data.active} />
           <CountRect title="Deaths" count={data.deaths} />

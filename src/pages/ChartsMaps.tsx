@@ -9,6 +9,7 @@ const ChartsMaps = () => {
             <DashboardCount />
          </div>
          <div className="mb-5">
+            <h1 className="text-center font-semibold text-xl mb-2">Covid history chart</h1>
             <Chart />
          </div>
          <div>

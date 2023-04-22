@@ -3,6 +3,7 @@ import { selectContactListById, updateContact } from "../features/contact/contac
 import { useTypedSelector } from "../app/store";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast"
 
 import { ContactType } from "../types";
 
@@ -15,6 +16,7 @@ const EditContact = () => {
     const onSubmitHandler = (e: React.FormEvent) => {
         e.preventDefault()
         dispatch(updateContact(formState))
+        toast.success("Contact updated successfully")
     }
     
     if(formState) {

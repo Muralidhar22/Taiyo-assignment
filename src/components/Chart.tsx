@@ -80,7 +80,7 @@ const Chart = () => {
     
     return(
         <>
-            <div className="relative w-full md:h-5/6">
+            <div className="relative w-full md:h-3/4">
                 <Line data={dataSet} options={{
                     aspectRatio: 1
                 }} />    

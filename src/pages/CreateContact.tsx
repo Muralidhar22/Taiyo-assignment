@@ -3,6 +3,7 @@ import { ContactType } from "../types";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
 import { addContact } from "../features/contact/contactSlice";
+import { toast } from "react-hot-toast";
 
 const INITIAL_STATE: ContactType = {
     id: nanoid(),
@@ -19,6 +20,7 @@ const CreateContact = () => {
         e.preventDefault()
         dispatch(addContact(formState))
         setFormState(INITIAL_STATE)
+        toast.success("Contact created successfully")
     }
     
     return(

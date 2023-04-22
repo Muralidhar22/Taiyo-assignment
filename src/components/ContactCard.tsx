@@ -3,12 +3,14 @@ import { ContactType } from "../types";
 import { deleteContact } from "../features/contact/contactSlice";
 import { useDispatch } from "react-redux";
 import { memo } from "react";
+import { toast } from "react-hot-toast";
 
 const ContactCard = ({ data }: { data: ContactType }) => {
     const dispatch = useDispatch()
     
     const onClickHandler = () => {
         dispatch(deleteContact(data.id))
+        toast.success("Contact deleted successfully")
     }
     
     return(

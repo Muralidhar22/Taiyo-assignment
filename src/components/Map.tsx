@@ -35,6 +35,7 @@ const Map = () => {
         <div className="w-full h-full">
             <MapContainer center={[20, 77]} zoom={5} style={{ height: "90vh", width: "w-4/5" }} >
                 <TileLayer
+                    className="z-500"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
